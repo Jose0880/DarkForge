@@ -14,8 +14,8 @@
         android:layout_height="wrap_content"
         android:text="@string/title"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-        app:layout_constraintBottom_toTopOf="@id/description"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/description"
@@ -24,50 +24,152 @@
         android:layout_marginVertical="@dimen/base_grid_size"
         android:text="@string/description"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintBottom_toTopOf="@id/edit_text_factorial"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title" />
 
-    <EditText
-        android:id="@+id/edit_text_factorial"
+    <!-- Sección de entrada de productos -->
+    <TextView
+        android:id="@+id/labelProductInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/factorial_hint"
+        android:layout_marginTop="@dimen/doub_grid_size"
+        android:text="Información del Producto"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/description" />
+
+    <EditText
+        android:id="@+id/editTextProductName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/base_grid_size"
+        android:hint="@string/product_name_hint"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/labelProductInfo" />
+
+    <EditText
+        android:id="@+id/editTextProductPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/base_grid_size"
+        android:layout_marginEnd="@dimen/base_grid_size"
+        android:hint="@string/product_price_hint"
+        android:importantForAutofill="no"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toStartOf="@+id/editTextProductQuantity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextProductName" />
+
+    <EditText
+        android:id="@+id/editTextProductQuantity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/product_quantity_hint"
         android:importantForAutofill="no"
         android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/description"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/text_result"
-        style="@style/TextAppearance.AppCompat.Display1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/doub_grid_size"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_text_factorial"
-        tools:text="42"
-        tools:visibility="visible" />
+        app:layout_constraintStart_toEndOf="@+id/editTextProductPrice"
+        app:layout_constraintTop_toTopOf="@+id/editTextProductPrice" />
 
     <Button
-        android:id="@+id/button_compute"
+        android:id="@+id/buttonAddProduct"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/doub_grid_size"
-        android:text="@string/compute"
+        android:layout_marginTop="@dimen/base_grid_size"
+        android:text="@string/add_product"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_result" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextProductPrice" />
 
+    <!-- Lista de productos -->
+    <TextView
+        android:id="@+id/labelProductList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/doub_grid_size"
+        android:text="Lista de Productos"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonAddProduct" />
+
+    <ScrollView
+        android:id="@+id/scrollViewProducts"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/base_grid_size"
+        android:layout_marginBottom="@dimen/base_grid_size"
+        app:layout_constraintBottom_toTopOf="@+id/labelClientInfo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/labelProductList">
+
+        <TextView
+            android:id="@+id/textViewProductList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+    </ScrollView>
+
+    <!-- Información del cliente -->
+    <TextView
+        android:id="@+id/labelClientInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Información del Cliente"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/editTextClientName"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextClientName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/base_grid_size"
+        android:layout_marginBottom="@dimen/base_grid_size"
+        android:hint="@string/client_name_hint"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/buttonGenerateInvoice"
+        app:layout_constraintEnd_toStartOf="@+id/buttonGenerateInvoice"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Botones de facturación -->
     <Button
-        android:id="@+id/button_appcompose"
+        android:id="@+id/buttonGenerateInvoice"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/compose_version"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:layout_marginBottom="@dimen/base_grid_size"
+        android:text="@string/generate_invoice"
+        app:layout_constraintBottom_toTopOf="@+id/scrollViewInvoice"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Factura generada -->
+    <ScrollView
+        android:id="@+id/scrollViewInvoice"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/base_grid_size"
+        app:layout_constraintBottom_toTopOf="@+id/buttonPrintInvoice"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/textViewInvoice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:visibility="gone"
+            tools:visibility="visible" />
+    </ScrollView>
+
+    <Button
+        android:id="@+id/buttonPrintInvoice"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/print_invoice"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

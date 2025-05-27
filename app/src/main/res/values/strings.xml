@@ -1,10 +1,21 @@
 <resources>
-    <string name="app_name">Kotlin Android Template</string>
-    <string name="title">This is just a template</string>
-    <string name="description">You can compute a factorial using the library-kotlin module. The result will be also shown in a notification using the library-android module.</string>
-    <string name="factorial_hint">Insert a number to compute his factorial</string>
-    <string name="compute">Compute</string>
-    <string name="notification_title">The Result is: %s</string>
-    <string name="please_enter_a_number">Please Enter a Number</string>
-    <string name="compose_version">In Compose</string>
+    <string name="app_name">Eduardo Facturación</string>
+    <string name="title">Sistema de Facturación</string>
+    <string name="description">Crea e imprime facturas para tus clientes</string>
+    
+    <!-- Campos de entrada -->
+    <string name="product_name_hint">Nombre del producto</string>
+    <string name="product_price_hint">Precio</string>
+    <string name="product_quantity_hint">Cantidad</string>
+    <string name="client_name_hint">Nombre del cliente</string>
+    
+    <!-- Botones -->
+    <string name="add_product">Agregar Producto</string>
+    <string name="generate_invoice">Generar Factura</string>
+    <string name="print_invoice">Imprimir Factura</string>
+    
+    <!-- Textos de factura -->
+    <string name="total">Total: %s</string>
+    <string name="invoice_number">Factura #%d</string>
+    <string name="date">Fecha: %s</string>
 </resources>
